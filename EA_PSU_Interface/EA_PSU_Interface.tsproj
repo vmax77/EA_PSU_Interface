@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.22">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{1EE32DDB-4F3D-E74D-434C-BABE3E4D84BD}" AutoDeleteType="true">ST_EA_RxPDO</Name>
+			<BitSize>160</BitSize>
+			<SubItem>
+				<Name>nStatus</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nVoltageMon</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nCurrentMon</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nControl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nVoltageSel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nCurrentSel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>112</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nPowerSel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nResistanceSel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>144</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-000000000041}" TcBaseType="true" HideSubItems="true" CName="AmsNetId">AMSNETID</Name>
+			<BitSize>48</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>6</Elements>
+			</ArrayInfo>
+			<Format>
+				<Printf>%d.%d.%d.%d.%d.%d</Printf>
+				<Parameter>[0]</Parameter>
+				<Parameter>[1]</Parameter>
+				<Parameter>[2]</Parameter>
+				<Parameter>[3]</Parameter>
+				<Parameter>[4]</Parameter>
+				<Parameter>[5]</Parameter>
+			</Format>
+		</DataType>
+		<DataType>
+			<Name GUID="{92317E81-2DEB-3F73-4BA4-161AC01937D9}" AutoDeleteType="true">ST_AdsAddr</Name>
+			<BitSize>64</BitSize>
+			<SubItem>
+				<Name>netID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000041}">AMSNETID</Type>
+				<BitSize>48</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>port</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{D1C32903-59E0-ED59-D8A5-814503921784}" AutoDeleteType="true">ST_EA_InfoData</Name>
+			<BitSize>80</BitSize>
+			<SubItem>
+				<Name>nState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>stAdsAddr</Name>
+				<Type GUID="{92317E81-2DEB-3F73-4BA4-161AC01937D9}">ST_AdsAddr</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{891C890B-DACB-2581-D7EA-C49CF14C8420}" AutoDeleteType="true">ST_EA_TxPDO</Name>
+			<BitSize>64</BitSize>
+			<SubItem>
+				<Name>nVoltageSel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nCurrentSel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nPowerSel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>nResistanceSel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>48</BitOffs>
+			</SubItem>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424de6000000000000007600000028000000100000000e000000010004000000000070000000000000000000000000000000000000000000000000008000008000000080800080000000800080008080000080808000c0c0c0000000ff0000ff000000ffff00ff000000ff00ff00ffff0000ffffff00fffffffffffffffffffffffffffffffff77777777777777f7777777777777777777777777777777777ffffffffffff7777f0000ff0000f7777f0000ff0000f77a7f0000ff0000f79a7aa0088aa0088797777777777777777f77777777777777fffffffffffffffffffffffffffffffff</ImageData>
+	</ImageDatas>
+	<Project ProjectGUID="{5A1FD232-764C-4EDE-A620-3D39D36413B4}" Target64Bit="true" ShowHideConfigurations="#x106">
+		<System>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{A91165E0-F0C9-4ED6-8F7A-FC03F95A47E3}" Name="PLC_Project" PrjFilePath="PLC_Project\PLC_Project.plcproj" TmcFilePath="PLC_Project\PLC_Project.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+					<Name>PLC_Project Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>MAIN.fbEAInterface[1].stHWVar.stRxPDO</Name>
+							<Type GUID="{1EE32DDB-4F3D-E74D-434C-BABE3E4D84BD}">ST_EA_RxPDO</Type>
+						</Var>
+						<Var>
+							<Name>MAIN.fbEAInterface[1].stHWVar.stInfoData</Name>
+							<Type GUID="{D1C32903-59E0-ED59-D8A5-814503921784}">ST_EA_InfoData</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2" AreaNo="1">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>MAIN.fbEAInterface[1].stHWVar.stTxPDO</Name>
+							<Type GUID="{891C890B-DACB-2581-D7EA-C49CF14C8420}">ST_EA_TxPDO</Type>
+						</Var>
+					</Vars>
+					<UnrestoredVarLinks ImportTime="2023-02-17T06:16:39">
+						<OwnerA Name="InputDst" Prefix="TIPC^PLC_Project^PLC_Project Instance" Type="1">
+							<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 1 (IF-AB-ECT for standard)">
+								<Link VarA="MAIN.fbEAInterface[1].stHWVar.stRxPDO.nControl" TypeA="UDINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000008}" VarB="DO RxPDO-Map^Control" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fbEAInterface[1].stHWVar.stRxPDO.nCurrentMon" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="DO RxPDO-Map^Current monitor" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fbEAInterface[1].stHWVar.stRxPDO.nCurrentSel" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="DO RxPDO-Map^Current select" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fbEAInterface[1].stHWVar.stRxPDO.nPowerSel" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="DO RxPDO-Map^Power select" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fbEAInterface[1].stHWVar.stRxPDO.nResistanceSel" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="DO RxPDO-Map^Resistance select" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fbEAInterface[1].stHWVar.stRxPDO.nStatus" TypeA="UDINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000008}" VarB="DO RxPDO-Map^Status" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fbEAInterface[1].stHWVar.stRxPDO.nVoltageMon" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="DO RxPDO-Map^Voltage monitor" RestoreInfo="ANotFound"/>
+								<Link VarA="MAIN.fbEAInterface[1].stHWVar.stRxPDO.nVoltageSel" TypeA="UINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000005}" VarB="DO RxPDO-Map^Voltage select" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<Contexts>
+						<Context>
+							<Id NeedCalleeCall="true">0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device Id="1" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="192.168.42.20.2.1" RemoteName="Device 1 (EtherCAT)" InfoImageId="2">
+				<Name>Device 1 (EtherCAT)</Name>
+				<AddressInfo>
+					<Pnp>
+						<DeviceDesc></DeviceDesc>
+						<DeviceName></DeviceName>
+						<DeviceData>000000000000</DeviceData>
+					</Pnp>
+				</AddressInfo>
+				<Image Id="1" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Box Id="1" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 1 (IF-AB-ECT for standard)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0208" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="51" VendorId="#x000008f3" ProductCode="#x021c29b0" RevisionNo="#x00010001" InfoDataAddr="true" WdDivider0400="25000" DdTime0420="0" EnableWdDivider0400="true" EnableWdTime0420="true" TimeoutMailbox2="6000" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="IF-AB-ECT for standard" Desc="IF-AB-ECT for standard" PortABoxInfo="#x00ffffff">
+						<SyncMan>001c14012600010001000000140114011401001c26010000</SyncMan>
+						<SyncMan>001e14012200010002000000140114011401001e22010000</SyncMan>
+						<SyncMan>001008006400010003000000000000000000001064010000</SyncMan>
+						<SyncMan>001614002000010004000000000000000000001620010000</SyncMan>
+						<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001600010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<Pdo Name="DO RxPDO-Map" Index="#x1a00" Flags="#x0010" SyncMan="3">
+							<Entry Name="Status" Index="#x21fa">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Voltage monitor" Index="#x21fc">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Current monitor" Index="#x21fd">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Control" Index="#x2191">
+								<Type>UDINT</Type>
+							</Entry>
+							<Entry Name="Voltage select" Index="#x21f5">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Current select" Index="#x21f6">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Power select" Index="#x21f7">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Resistance select" Index="#x21f8">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="DI TxPDO-Map" Index="#x1600" InOut="1" Flags="#x0010" SyncMan="2">
+							<Entry Name="Voltage select" Index="#x21f5">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Current select" Index="#x21f6">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Power select" Index="#x21f7">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="Resistance select" Index="#x21f8">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+					</EtherCAT>
+				</Box>
+				<EtherCAT/>
+			</Device>
+		</Io>
+	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
+		<OwnerA Name="TIPC^PLC_Project^PLC_Project Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 1 (IF-AB-ECT for standard)">
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stInfoData" VarB="InfoData^AdsAddr" Size="64" OffsA="16"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stInfoData" VarB="InfoData^State"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Control" Size="32" OffsA="64"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Current monitor" Size="16" OffsA="48"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Current select" Size="16" OffsA="112"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Power select" Size="16" OffsA="128"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Resistance select" Size="16" OffsA="144"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Status"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Voltage monitor" Size="16" OffsA="32"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Voltage select" Size="16" OffsA="96"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbEAInterface[1].stHWVar.stTxPDO" VarB="DI TxPDO-Map^Current select" Size="16" OffsA="16"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbEAInterface[1].stHWVar.stTxPDO" VarB="DI TxPDO-Map^Power select" Size="16" OffsA="32"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbEAInterface[1].stHWVar.stTxPDO" VarB="DI TxPDO-Map^Resistance select" Size="16" OffsA="48"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbEAInterface[1].stHWVar.stTxPDO" VarB="DI TxPDO-Map^Voltage select"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmProject>

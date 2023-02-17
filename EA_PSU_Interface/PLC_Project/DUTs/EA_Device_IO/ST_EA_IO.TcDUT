@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <DUT Name="ST_EA_IO" Id="{1a7c587e-701a-4052-bda9-f06215f9e292}">
+    <Declaration><![CDATA[TYPE ST_EA_IO :
+STRUCT
+	stRxPDO			AT%I* 	: ST_EA_RxPDO;
+	stTxPDO			AT%Q* 	: ST_EA_TxPDO;
+	stInfoData		AT%I* 	: ST_EA_InfoData;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <DUT Name="ST_EA_RxPDO" Id="{50b21276-a2d4-4463-88dd-5ecd04765076}">
+    <Declaration><![CDATA[TYPE ST_EA_RxPDO :
+STRUCT
+	nStatus			 : UDINT;
+	nVoltageMon		 : UINT;
+	nCurrentMon		 : UINT;
+	nControl		 : UDINT;
+	nVoltageSel		 : UINT;
+	nCurrentSel		 : UINT;
+	nPowerSel		 : UINT;
+	nResistanceSel	 : UINT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

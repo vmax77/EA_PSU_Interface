@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <DUT Name="ST_EA_InfoData" Id="{b5355426-503b-411c-a7fb-ee5a8757fea7}">
+    <Declaration><![CDATA[TYPE ST_EA_InfoData :
+STRUCT
+	nState				: UINT;
+	stAdsAddr			: ST_AdsAddr;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

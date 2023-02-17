@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.9">
+  <POU Name="FB_EA_Interface" Id="{ef28b490-193f-413d-a266-c141ee8eb9a9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_EA_Interface
+VAR_INPUT
+	
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	stHWVar			: ST_EA_IO;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_EA_Interface">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
