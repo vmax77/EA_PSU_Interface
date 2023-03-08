@@ -3,19 +3,183 @@
   <POU Name="FB_EA_Interface" Id="{ef28b490-193f-413d-a266-c141ee8eb9a9}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_EA_Interface
 VAR_INPUT
+	//Device Specifications - From Datasheet of the PSU/Load
+	rMax_Current					: REAL;							
+	rMax_Voltage					: REAL;
+	rMax_Power						: REAL;
+	rMax_Resistance					: REAL;
 	
+	//Setpoint
+	rCurrent_Setpoint				: REAL;
+	rVoltage_Setpoint				: REAL;
+	rPower_Setpoint					: REAL;
+	rResistance_Setpoint			: REAL;
+	
+	bRemote							: BOOL 		:= TRUE;
+	bPowerStage						: BOOL;
 END_VAR
 VAR_OUTPUT
+	bRemoteStatus					: BOOL;
+	bPowerStageStatus				: BOOL;
+	
+	rCurrent_Actual					: REAL;
+	rVoltage_Actual					: REAL;	
 END_VAR
 VAR
-	stHWVar			: ST_EA_IO;
+	stHWVar							: ST_EA_IO;
+	                				
+	eState							: (INIT, AUTO_ON, REMOTE, IDLE, POWER_STAGE_ON, POWER_STAGE_OFF, DONE, ERROR);  
+	eParam							: (AUTO_ON,POWER_ON,REMOTE,POWER_STAGE);
+	
+	fbWriteCoe						: FB_ECCoeSdoWriteEx;
+	
+	nCoEVal							: ARRAY [1..4] OF UINT;
+	bAutoOn							: BOOL;
+	
+END_VAR
+
+VAR CONSTANT
+	//CoE Index
+	
+	nCoeIdx_Remote					: WORD		:= 16#2193;
+	nCoeIdx_AutoOn					: WORD		:= 16#2198;
+	nCoeIdx_PowerOn					: WORD		:= 16#2199;
+	nCoeIdx_PowerStage				: WORD		:= 16#2196;
+		
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[;]]></ST>
+      <ST><![CDATA[
+ACT_Scaling();
+
+CASE eState OF
+	
+	INIT: 
+	
+		fbWriteCoe(
+			bExecute				:= FALSE);
+			
+				
+		nCoEVal[AUTO_ON]			:= 65280;
+		nCoEVal[POWER_ON]			:= 65535;
+		nCoEVal[REMOTE]				:= 65280;
+		nCoEVal[POWER_STAGE]		:= 0;
+		
+		IF NOT fbWriteCoe.bBusy
+		AND stHWVar.stInfoData.nState=8						//Device in OP
+		THEN
+		
+			eState					:= AUTO_ON;
+			
+		END_IF
+					
+			
+	AUTO_ON:
+	
+		IF NOT fbWriteCoe.bBusy
+		THEN
+			ACT_AutoOn();
+		ELSE
+			eState					:= POWER_ON;
+		END_IF
+	
+		
+	
+		
+END_CASE]]></ST>
     </Implementation>
+    <Action Name="ACT_Auto_On" Id="{5a83d868-5e5e-424b-8253-995a6d9babe9}">
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_AutoOn" Id="{5b2f47d3-0933-4a61-b98f-ae913c6e4fda}">
+      <Implementation>
+        <ST><![CDATA[
+
+fbWriteCoe(
+	sNetID			:= stHWVar.stInfoData.stAdsAddr.netID,
+	nSlaveAddr		:= stHWVar.stInfoData.stAdsAddr.port,
+	nIndex			:= nCoeIdx_AutoOn,
+	pSrcBuf			:= ADR(nCoEVal[AUTO_ON]),
+	cbBufLen		:= SIZEOF(nCoeVal[AUTO_ON]),
+	bExecute		:= TRUE);
+	
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ACT_Scaling" Id="{908518fa-127d-474d-b7dd-bb41556b928c}">
+      <Implementation>
+        <ST><![CDATA[
+
+//Setpoint Scaling
+
+stHWVar.stTxPDO.nCurrentSel			:= REAL_TO_UINT(rCurrent_Setpoint 	* (rMax_Current/65535));
+stHWVar.stTxPDO.nPowerSel			:= REAL_TO_UINT(rPower_Setpoint 	* (rMax_Power/65535));
+stHWVar.stTxPDO.nVoltageSel			:= REAL_TO_UINT(rVoltage_Setpoint 	* (rMax_Voltage/65535));
+stHWVar.stTxPDO.nResistanceSel		:= REAL_TO_UINT(rResistance_Setpoint* (rMax_Resistance/65535));
+
+//Actual Value Scaling
+
+
+rCurrent_Actual						:= stHWVar.stRxPDO.nCurrentMon	/ rMax_Current;
+rVoltage_Actual						:= stHWVar.stRxPDO.nVoltageMon	/ rMax_Voltage;
+]]></ST>
+      </Implementation>
+    </Action>
     <LineIds Name="FB_EA_Interface">
+      <LineId Id="47" Count="0" />
+      <LineId Id="41" Count="1" />
       <LineId Id="9" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="62" Count="2" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="87" Count="1" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="89" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="72" Count="1" />
+      <LineId Id="93" Count="1" />
+      <LineId Id="96" Count="2" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="99" Count="1" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="44" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EA_Interface.ACT_Auto_On">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_EA_Interface.ACT_AutoOn">
+      <LineId Id="2" Count="1" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="4" Count="3" />
+      <LineId Id="9" Count="3" />
+    </LineIds>
+    <LineIds Name="FB_EA_Interface.ACT_Scaling">
+      <LineId Id="2" Count="1" />
+      <LineId Id="1" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="17" Count="2" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="16" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

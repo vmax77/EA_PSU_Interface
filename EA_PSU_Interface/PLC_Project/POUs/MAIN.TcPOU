@@ -4,23 +4,29 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR CONSTANT
 	CONST_MAX_NUMBER_OF_EA_DEVICES	: INT:= 1;
-	
-	//Device Specifications
-	MAX_CURRENT						: REAL;
-	MAX_VOLTAGE						: REAL;
-	MAX_POWER						: REAL;
-	MAX_RESISTANCE					: REAL;
 END_VAR
 
 VAR
 	fbEAInterface					: ARRAY [1..CONST_MAX_NUMBER_OF_EA_DEVICES] OF FB_EA_Interface;
+	nDeviceIdx						: INT	:= 1;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbEAInterface[1]();]]></ST>
+      <ST><![CDATA[
+FOR nDeviceIdx := 1 TO CONST_MAX_NUMBER_OF_EA_DEVICES DO
+	
+	fbEAInterface[nDeviceIdx]();
+
+
+END_FOR]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="17" Count="0" />
       <LineId Id="2" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="20" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

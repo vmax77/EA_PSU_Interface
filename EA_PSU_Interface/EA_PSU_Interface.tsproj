@@ -145,7 +145,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{A91165E0-F0C9-4ED6-8F7A-FC03F95A47E3}" Name="PLC_Project" PrjFilePath="PLC_Project\PLC_Project.plcproj" TmcFilePath="PLC_Project\PLC_Project.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC_Project\PLC_Project.tmc">
 					<Name>PLC_Project Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -269,6 +269,7 @@
 	</Project>
 	<Mappings>
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500821000403}" Id="#x02030020"/>
 		<OwnerA Name="TIPC^PLC_Project^PLC_Project Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 1 (IF-AB-ECT for standard)">
 				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stInfoData" VarB="InfoData^AdsAddr" Size="64" OffsA="16"/>

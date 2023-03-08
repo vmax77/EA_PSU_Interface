@@ -271,6 +271,8 @@
 		<MappingInfo Identifier="{00000000-2001-0850-0020-500810000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^PLC_Project^PLC_Project Instance">
 			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 1 (IF-AB-ECT for standard)">
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stInfoData" VarB="InfoData^AdsAddr" Size="64" OffsA="16"/>
+				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stInfoData" VarB="InfoData^State"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Control" Size="32" OffsA="64"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Current monitor" Size="16" OffsA="48"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Current select" Size="16" OffsA="112"/>
@@ -279,6 +281,10 @@
 				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Status"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Voltage monitor" Size="16" OffsA="32"/>
 				<Link VarA="PlcTask Inputs^MAIN.fbEAInterface[1].stHWVar.stRxPDO" VarB="DO RxPDO-Map^Voltage select" Size="16" OffsA="96"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbEAInterface[1].stHWVar.stTxPDO" VarB="DI TxPDO-Map^Current select" Size="16" OffsA="16"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbEAInterface[1].stHWVar.stTxPDO" VarB="DI TxPDO-Map^Power select" Size="16" OffsA="32"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbEAInterface[1].stHWVar.stTxPDO" VarB="DI TxPDO-Map^Resistance select" Size="16" OffsA="48"/>
+				<Link VarA="PlcTask Outputs^MAIN.fbEAInterface[1].stHWVar.stTxPDO" VarB="DI TxPDO-Map^Voltage select"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>
